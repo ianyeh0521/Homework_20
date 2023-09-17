@@ -31,6 +31,7 @@ public class Hw4 {
 		System.out.println();
 
 		// 2. 請建立一個字串,經過程式執行後,輸入結果是反過來的
+		System.out.println("請輸入一個字串，幫你反轉:");
 		Scanner sc = new Scanner(System.in);
 		String s = sc.next();
 		int strLength = s.length();
@@ -102,7 +103,7 @@ public class Hw4 {
 		System.out.println();
 
 		// 5. 請設計由鍵盤輸入三個整數,分別代表西元yyyy年,mm月,dd日,執行後會顯示是該年的第幾天
-		System.out.print("請輸入三個整數，分別代表分別代表西元yyyy年, mm月, dd日");
+		System.out.println("請輸入三個整數，分別代表分別代表西元yyyy年, mm月, dd日");
 		doAll();
 		System.out.println();
 		System.out.println("==================");
@@ -193,7 +194,7 @@ public class Hw4 {
 				&& arrayYear[2] > 30) {
 			System.out.println("日期輸入錯誤，請重新輸入正確年月日");
 			doAll();
-			// 二月
+		// 二月
 		} else if (arrayYear[1] == 2) {
 			if (arrayYear[2] > 29) {
 				System.out.println("日期輸入錯誤，請重新輸入正確年月日");
@@ -212,7 +213,7 @@ public class Hw4 {
 					System.out.println("輸入日期為該年第" + (31 + arrayYear[2]) + "天");
 				}
 			}
-			// 日期沒有錯誤的
+		// 二月以外，日期沒有錯誤的
 		} else {
 			switch (arrayYear[1]) {
 			case 12:
@@ -276,16 +277,12 @@ public class Hw4 {
 					daysCount += 31;
 				}
 			case 2:
-				if (arrayYear[1] == 2) {
-					daysCount += arrayYear[2];
+				// 非閏年
+				if (deterLeapYear == 0) {
+					daysCount += 28;
+				// 閏年
 				} else {
-					// 非閏年
-					if (deterLeapYear == 0) {
-						daysCount += 28;
-						// 閏年
-					} else {
-						daysCount += 29;
-					}
+					daysCount += 29;
 				}
 			case 1:
 				if (arrayYear[1] == 1) {
