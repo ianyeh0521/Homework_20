@@ -59,21 +59,8 @@ public class Hw4 {
 		for (int i = 0; i < arrayB.length; i++) {
 			for (int j = 0; j < arrayB[i].length(); j++) {
 				switch (arrayB[i].charAt(j)) {
-				case 'a':
-					vowCount += 1;
-					break;
-				case 'e':
-					vowCount += 1;
-					break;
-				case 'i':
-					vowCount += 1;
-					break;
-				case 'o':
-					vowCount += 1;
-					break;
-				case 'u':
-					vowCount += 1;
-					break;
+				case 'a', 'e','i', 'o', 'u' -> vowCount += 1;
+				default -> vowCount += 0;
 				}
 			}
 		}
