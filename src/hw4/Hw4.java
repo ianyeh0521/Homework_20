@@ -59,7 +59,7 @@ public class Hw4 {
 		for (int i = 0; i < arrayB.length; i++) {
 			for (int j = 0; j < arrayB[i].length(); j++) {
 				switch (arrayB[i].charAt(j)) {
-				case 'a', 'e','i', 'o', 'u' -> vowCount += 1;
+				case 'a', 'e', 'i', 'o', 'u' -> vowCount += 1;
 				default -> vowCount += 0;
 				}
 			}
@@ -173,15 +173,12 @@ public class Hw4 {
 		int daysCount = 0;
 
 		// 判斷月份及日期是否正常，並執行
-		// 日期錯誤的
-		if (arrayYear[2] > 31) {
+		// 二月以外月份、日期錯誤的
+		if ((arrayYear[2] > 31) || ((arrayYear[1] == 4 || arrayYear[1] == 6 || arrayYear[1] == 9 || arrayYear[1] == 11)
+				&& arrayYear[2] > 30) || arrayYear[1] > 12) {
 			System.out.println("日期輸入錯誤，請重新輸入正確年月日");
 			doAll();
-		} else if ((arrayYear[1] == 4 || arrayYear[1] == 6 || arrayYear[1] == 9 || arrayYear[1] == 11)
-				&& arrayYear[2] > 30) {
-			System.out.println("日期輸入錯誤，請重新輸入正確年月日");
-			doAll();
-		// 二月
+			// 二月日期錯誤及正確的
 		} else if (arrayYear[1] == 2) {
 			if (arrayYear[2] > 29) {
 				System.out.println("日期輸入錯誤，請重新輸入正確年月日");
@@ -200,7 +197,7 @@ public class Hw4 {
 					System.out.println("輸入日期為該年第" + (31 + arrayYear[2]) + "天");
 				}
 			}
-		// 二月以外，日期沒有錯誤的
+			// 二月以外，日期沒有錯誤的
 		} else {
 			switch (arrayYear[1]) {
 			case 12:
@@ -267,7 +264,7 @@ public class Hw4 {
 				// 非閏年
 				if (deterLeapYear == 0) {
 					daysCount += 28;
-				// 閏年
+					// 閏年
 				} else {
 					daysCount += 29;
 				}
