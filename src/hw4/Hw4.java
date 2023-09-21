@@ -97,7 +97,8 @@ public class Hw4 {
 		System.out.println();
 
 		// 6. 班上有8位同學,他們進行了6次考試結果如下，請算出每位同學考最高分的次數
-		int[][] sixTests = { { 10, 35, 40, 100, 90, 85, 75, 70 }, { 37, 75, 77, 89, 64, 75, 70, 95 },
+		int[][] sixTests = { 
+				{ 10, 35, 40, 100, 90, 85, 75, 70 }, { 37, 75, 77, 89, 64, 75, 70, 95 },
 				{ 100, 70, 79, 90, 75, 70, 79, 90 }, { 77, 95, 70, 89, 60, 75, 85, 89 },
 				{ 98, 70, 89, 90, 75, 90, 89, 90 }, { 90, 80, 100, 75, 50, 20, 99, 75 }
 
@@ -105,7 +106,7 @@ public class Hw4 {
 
 		int[][] sortedSixTest = new int[6][];
 
-		// 複製原二維陣列
+		// 複製原二維陣列並排序
 		for (int i = 0; i < sixTests.length; i++) {
 			sortedSixTest[i] = Arrays.copyOf(sixTests[i], 8);
 			Arrays.sort(sortedSixTest[i]);
@@ -154,6 +155,10 @@ public class Hw4 {
 	}
 
 	public static void decYear(int[] arrayYear) {
+		int daysCount = 0;
+		int[] nonLeapYearDay = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		int[] leapYearDay = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		
 		// 判斷是否為閏年
 		int deterLeapYear = 0;
 		if (arrayYear[0] % 4 == 0) {
@@ -170,111 +175,104 @@ public class Hw4 {
 			deterLeapYear = 0;
 		}
 
-		int daysCount = 0;
-
 		// 判斷月份及日期是否正常，並執行
-		// 二月以外月份、日期錯誤的
-		if ((arrayYear[2] > 31) || ((arrayYear[1] == 4 || arrayYear[1] == 6 || arrayYear[1] == 9 || arrayYear[1] == 11)
-				&& arrayYear[2] > 30) || arrayYear[1] > 12) {
+		// 年月日輸入錯誤的		
+		if ((arrayYear[0] < 0 || arrayYear[1] < 0 || arrayYear[2] < 0)
+				|| arrayYear[1] > 12 
+				|| (arrayYear[2] > 31) || ((arrayYear[1] == 4 || arrayYear[1] == 6 || arrayYear[1] == 9 || arrayYear[1] == 11) && arrayYear[2] > 30) 
+				|| ((arrayYear[1] == 2 && arrayYear[2] > 29) || (arrayYear[1] == 2 && deterLeapYear == 0 && arrayYear[2] == 29))) {
 			System.out.println("日期輸入錯誤，請重新輸入正確年月日");
 			doAll();
-			// 二月日期錯誤及正確的
-		} else if (arrayYear[1] == 2) {
-			if (arrayYear[2] > 29) {
-				System.out.println("日期輸入錯誤，請重新輸入正確年月日");
-				doAll();
-			} else {
-				// 二月非閏年
-				if (deterLeapYear == 0) {
-					if (arrayYear[2] == 29) {
-						System.out.println("日期輸入錯誤，請重新輸入正確年月日");
-						doAll();
-					} else {
-						System.out.println("輸入日期為該年第" + (31 + arrayYear[2]) + "天");
-					}
-					// 二月閏年
-				} else {
-					System.out.println("輸入日期為該年第" + (31 + arrayYear[2]) + "天");
-				}
-			}
-			// 二月以外，日期沒有錯誤的
+		// 輸入正確的
 		} else {
-			switch (arrayYear[1]) {
-			case 12:
-				if (arrayYear[1] == 12) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
+			// 非閏年
+			if(deterLeapYear == 0) {
+				for(int i = 0; i < arrayYear[1] - 1; i++) {
+					daysCount += nonLeapYearDay[i];
 				}
-			case 11:
-				if (arrayYear[1] == 11) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 30;
+				daysCount += arrayYear[2];
+			// 閏年
+			}else {
+				for(int i = 0; i < arrayYear[1] - 1; i++) {
+					daysCount += leapYearDay[i];
 				}
-			case 10:
-				if (arrayYear[1] == 10) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
-			case 9:
-				if (arrayYear[1] == 9) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 30;
-				}
-			case 8:
-				if (arrayYear[1] == 8) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
-			case 7:
-				if (arrayYear[1] == 7) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
-			case 6:
-				if (arrayYear[1] == 6) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 30;
-				}
-			case 5:
-				if (arrayYear[1] == 5) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
-			case 4:
-				if (arrayYear[1] == 4) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 30;
-				}
-			case 3:
-				if (arrayYear[1] == 3) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
-			case 2:
-				// 非閏年
-				if (deterLeapYear == 0) {
-					daysCount += 28;
-					// 閏年
-				} else {
-					daysCount += 29;
-				}
-			case 1:
-				if (arrayYear[1] == 1) {
-					daysCount += arrayYear[2];
-				} else {
-					daysCount += 31;
-				}
+				daysCount += arrayYear[2];
 			}
+			
+			
+			// 原本 switch...case fall through 作法，但好長看了不太舒服
+//			switch (arrayYear[1]) {
+//			case 12:
+//					daysCount += arrayYear[2];
+//			case 11:
+//				if (arrayYear[1] == 11) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 30;
+//				}
+//			case 10:
+//				if (arrayYear[1] == 10) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+//			case 9:
+//				if (arrayYear[1] == 9) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 30;
+//				}
+//			case 8:
+//				if (arrayYear[1] == 8) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+//			case 7:
+//				if (arrayYear[1] == 7) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+//			case 6:
+//				if (arrayYear[1] == 6) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 30;
+//				}
+//			case 5:
+//				if (arrayYear[1] == 5) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+//			case 4:
+//				if (arrayYear[1] == 4) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 30;
+//				}
+//			case 3:
+//				if (arrayYear[1] == 3) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+//			case 2:
+//				// 非閏年
+//				if (deterLeapYear == 0) {
+//					daysCount += 28;
+//					// 閏年
+//				} else {
+//					daysCount += 29;
+//				}
+//			case 1:
+//				if (arrayYear[1] == 1) {
+//					daysCount += arrayYear[2];
+//				} else {
+//					daysCount += 31;
+//				}
+
 			System.out.println("輸入日期為該年第" + daysCount + "天");
 		}
 
