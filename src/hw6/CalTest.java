@@ -25,6 +25,7 @@ public class CalTest {
 			Calculator c = new Calculator(calcs[0], calcs[1]);
 			System.out.println(c.powerXY());
 			
+			
 		}catch (CalException e) {
 			System.out.println(e.getMessage());
 		}
