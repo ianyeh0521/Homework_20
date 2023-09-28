@@ -11,9 +11,9 @@ public class Cat extends Pets implements Serializable {
 		super(name);
 	}
 
-	@Override
+	
 	public void setName(String name) {
-		this.name = name;
+		super.setName(name);
 	}
 
 	@Override

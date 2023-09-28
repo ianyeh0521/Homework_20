@@ -4,12 +4,14 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 public class ObjectInOutHomework {
 
 	public static void main(String[] args) throws Exception {
+		
 		Pets[] pets = new Pets[4];
 		pets[0] = new Cat("Loki");
 		pets[1] = new Cat("Milo");

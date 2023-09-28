@@ -11,11 +11,12 @@ public class Dog extends Pets implements Serializable {
 		super(name);
 	}
 
-	@Override
+	
 	public void setName(String name) {
-		this.name = name;
+		super.setName(name);
 	}
 
+	
 	@Override
 	public void speak() {
 		System.out.println("This is Dog " + name + " speaking.");
