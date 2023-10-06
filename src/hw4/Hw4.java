@@ -8,7 +8,7 @@ public class Hw4 {
 
 	public static void main(String[] args) {
 
-		// 1. 一維陣列，大於平均的元素
+//		// 1. 一維陣列，大於平均的元素
 		int[] arrayA = { 29, 100, 39, 41, 50, 8, 66, 77, 95, 15 };
 		double sum = 0;
 
