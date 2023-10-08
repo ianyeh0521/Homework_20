@@ -16,11 +16,14 @@ public class Q3 {
 		Date date1 = new SimpleDateFormat("yyyyMMdd").parse(tempDates);
 
 		if (nexInt == 1) {
-			System.out.println(new SimpleDateFormat("yyyy/MM/dd").format(date1));
+			System.out.println("年/月/日：" + new SimpleDateFormat("yyyy/MM/dd").format(date1));
 		} else if (nexInt == 2) {
-			System.out.println(new SimpleDateFormat("MM/dd/yyyy").format(date1));
+			System.out.println("月/日/年：" + new SimpleDateFormat("MM/dd/yyyy").format(date1));
 		} else if (nexInt == 3) {
-			System.out.println(new SimpleDateFormat("dd/MM/yyyy").format(date1));
+			System.out.println("日/月/年：" + new SimpleDateFormat("dd/MM/yyyy").format(date1));
+		} else {
+			System.out.println("格式輸入不正確，請再輸入一次!");
+			getDates();
 		}
 
 	}

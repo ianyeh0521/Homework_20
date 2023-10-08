@@ -48,7 +48,7 @@ public class Q2 {
 
 	// (2) 百分比
 	public static void percentage(String tempStr) {
-		System.out.print("百分比：");
+		System.out.print("百分比數字：");
 		BigDecimal bigDecNum2 = BigDecimal.valueOf(Double.parseDouble(tempStr));
 		System.out.println((bigDecNum2.multiply(BigDecimal.valueOf(100)).stripTrailingZeros()).toPlainString() + "%");
 
@@ -56,7 +56,7 @@ public class Q2 {
 
 	// (3) 科學記號
 	public static void scientificNota(String tempStr) {
-		System.out.print("科學記號：");
+		System.out.print("科學記號數字：");
 		BigDecimal bigDecNum3 = BigDecimal.valueOf(Double.parseDouble(tempStr));
 		DecimalFormat format = new DecimalFormat("0.#E00");
 		System.out.println(format.format(bigDecNum3));
